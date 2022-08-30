@@ -1,5 +1,5 @@
 # IMReportTool
-[即时通讯转发工具 – QQ/WeChat – AutoAHK](https://www.autoahk.com/?p=43511?viewtoken=9b6ee5707d1e9f562c6244063e226d4b)
+[即时通讯转发工具 – QQ/WeChat – AutoAHK](https://www.autoahk.com/?p=43511)
 
 ## Require
 
