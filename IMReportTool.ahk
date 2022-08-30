@@ -26,18 +26,30 @@ return
 
 
 Button行为观察:
-    ReportTIM("73520") ;Button send
+    if WinExist("ahk_exe TIM.exe")
+        ReportTIM("56432")          ;Button send
+    else
+        ReportWeChat("行为观察")    ;Button send
 return
 
 Button幽灵猎手:
-    ReportWeChat("幽灵")
+    if WinExist("ahk_exe TIM.exe")
+        ReportTIM("54645")
+    else
+        ReportWeChat("幽灵猎手")
 return
 Button码农贼船:
-    ReportTIM("79285")
+    if WinExist("ahk_exe TIM.exe")
+        ReportTIM("86781")
+    else
+        ReportWeChat("码农贼船")
 return
 
 Button一战成硕:
-    ReportTIM("95990")
+    if WinExist("ahk_exe TIM.exe")
+        ReportTIM("45645")
+    else
+        ReportWeChat("一战成硕")
 return
 
 Button清除:
