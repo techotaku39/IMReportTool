@@ -54,7 +54,7 @@ return
 
 Button清除:
 Gui %ReportUI%:Default
-Loop 100
+Loop 4 ;Button count
 {
     CheckName:="Button" A_Index*2
     GuiControl,,%CheckName%,0
@@ -63,7 +63,7 @@ return
 
 Button发送:
 CheckNum:=0
-Loop 100
+Loop 4 ;Button count
 {
     CheckName:="Button" A_Index*2
     ControlGet IsChecked,Checked,,%CheckName%,ahk_id %ReportUI%
