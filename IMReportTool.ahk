@@ -1,5 +1,6 @@
 Menu Tray,NoStandard
 Menu Tray,Add,转发
+Menu Tray,Add,重启
 Menu Tray,Add,退出
 
 Gui New,HwndReportUI +AlwaysOnTop +ToolWindow
@@ -106,5 +107,7 @@ return
 转发:
     Gui %ReportUI%:Show,x0 w155,转发
 return
+重启:
+    Reload
 退出:
     ExitApp
