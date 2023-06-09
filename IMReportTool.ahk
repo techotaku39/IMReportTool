@@ -1,5 +1,3 @@
-﻿FileEncoding UTF-8-RAW
-
 Menu Tray,NoStandard
 Menu Tray,Add,转发
 Menu Tray,Add,退出
@@ -52,65 +50,61 @@ Button一战成硕:
         ReportWeChat("一战成硕")
 return
 
+
 Button清除:
-    Gui %ReportUI%:Default
-    Loop 4 ;Button count
-    {
-        CheckName:="Button" A_Index*2
-        GuiControl,,%CheckName%,0
-    }
+Gui %ReportUI%:Default
+Loop 4 ;Button count
+{
+    CheckName:="Button" A_Index*2
+    GuiControl,,%CheckName%,0
+}
 return
 
 Button发送:
-    CheckNum:=0
-    Loop 4 ;Button count
+CheckNum:=0
+Loop 4 ;Button count
+{
+    CheckName:="Button" A_Index*2
+    ControlGet IsChecked,Checked,,%CheckName%,ahk_id %ReportUI%
+    if (IsChecked)
     {
-        CheckName:="Button" A_Index*2
-        ControlGet IsChecked,Checked,,%CheckName%,ahk_id %ReportUI%
-        if (IsChecked)
+        Sleep 750
+        CheckNum++
+        if (CheckNum>10)
         {
-            Sleep 500
-            CheckNum++
-            if (CheckNum>10)
-            {
-                MsgBox 0x10,转发,数量上限
-                break 1
-            }
-            ClickName:="Button" A_Index*2-1
-            ControlClick %ClickName%,ahk_id %ReportUI%
+            MsgBox 0x10,转发,数量上限
+            break 1
         }
+        ClickName:="Button" A_Index*2-1
+        ControlClick %ClickName%,ahk_id %ReportUI%
     }
-    if (CheckNum>=10)
-        CheckNum:="F"
-    GuiControl %ReportUI%:,Static1,%CheckNum%
-return
-
-
-转发:
-    Gui %ReportUI%:Show,x0 w155,转发
-return
-
-退出:
-    ExitApp
-
-GuiClose:
-    Gui Hide
+}
+if (CheckNum>=10)
+    CheckNum:="F"
+GuiControl %ReportUI%:,Static1,%CheckNum%
 return
 
 
 #NoEnv
 #SingleInstance Force
-
 ReportTIM(txt)
 {
     ControlSend,,{Text}%txt%,转发 ahk_exe TIM.exe
     Sleep 500
     ControlSend,,{Enter},转发 ahk_exe TIM.exe
 }
-
 ReportWeChat(txt)
 {
     ControlSend,,{Text}%txt%,ahk_class SelectContactWnd ahk_exe WeChat.exe
     Sleep 500
     ControlSend,,{Enter},ahk_class SelectContactWnd ahk_exe WeChat.exe
 }
+
+GuiClose:
+    Gui Hide
+return
+转发:
+    Gui %ReportUI%:Show,x0 w155,转发
+return
+退出:
+    ExitApp
