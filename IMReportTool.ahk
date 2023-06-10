@@ -28,9 +28,9 @@ Button行为观察: ;按钮名
 Switch
 {
 Case WinExist("ahk_exe QQ.exe"):
-    ReportTIM("56432") ;群号
+    ReportTIM("56432") ;群号(开头)
 Case WinExist("ahk_exe TIM.exe"):
-    ReportQQ("54645") ;群号
+    ReportQQ("54645") ;群号(开头)
 Default:
     ReportWeChat("行为观察") ;群名
 }
