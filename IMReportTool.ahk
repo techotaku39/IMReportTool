@@ -6,7 +6,7 @@ Menu Tray,Add,退出
 Gui New,HwndReportUI +AlwaysOnTop +ToolWindow
 Gui Font,s12,Microsoft YaHei UI
 
-Gui Add,Button,x8 Section w122 -Wrap,行为观察 ;Report name
+Gui Add,Button,x8 Section w122 -Wrap,行为观察 ;按钮名
 Gui Add,CheckBox,x+5 yp+4
 
 Gui Add,Button,xs y+10 w122 -Wrap,幽灵猎手
@@ -24,37 +24,22 @@ Gui Add,Text,x+5 yp+4,0
 return
 
 
-Button行为观察:
-    if WinExist("ahk_exe TIM.exe")
-        ReportTIM("56432")          ;Button send
-    else
-        ReportWeChat("行为观察")    ;Button send
-return
-
-Button幽灵猎手:
-    if WinExist("ahk_exe TIM.exe")
-        ReportTIM("54645")
-    else
-        ReportWeChat("幽灵猎手")
-return
-Button码农贼船:
-    if WinExist("ahk_exe TIM.exe")
-        ReportTIM("86781")
-    else
-        ReportWeChat("码农贼船")
-return
-
-Button一战成硕:
-    if WinExist("ahk_exe TIM.exe")
-        ReportTIM("45645")
-    else
-        ReportWeChat("一战成硕")
+Button行为观察: ;按钮名
+Switch
+{
+Case WinExist("ahk_exe QQ.exe"):
+    ReportTIM("56432") ;群号
+Case WinExist("ahk_exe TIM.exe"):
+    ReportQQ("54645") ;群号
+Default:
+    ReportWeChat("行为观察") ;群名
+}
 return
 
 
 Button清除:
 Gui %ReportUI%:Default
-Loop 4 ;Button count
+Loop 4 ;勾选框数量
 {
     CheckName:="Button" A_Index*2
     GuiControl,,%CheckName%,0
@@ -63,7 +48,7 @@ return
 
 Button发送:
 CheckNum:=0
-Loop 4 ;Button count
+Loop 4 ;勾选框数量
 {
     CheckName:="Button" A_Index*2
     ControlGet IsChecked,Checked,,%CheckName%,ahk_id %ReportUI%
@@ -88,6 +73,12 @@ return
 
 #NoEnv
 #SingleInstance Force
+ReportQQ(txt)
+{
+    ControlSend,,{Text}%txt%,转发 ahk_exe QQ.exe
+    Sleep 500
+    ControlSend,,{Enter},转发 ahk_exe QQ.exe
+}
 ReportTIM(txt)
 {
     ControlSend,,{Text}%txt%,转发 ahk_exe TIM.exe
