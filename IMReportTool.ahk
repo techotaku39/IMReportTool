@@ -6,15 +6,15 @@ Menu Tray,Add,退出
 Gui New,HwndReportUI +AlwaysOnTop +ToolWindow
 Gui Font,s12,Microsoft YaHei UI
 
-Gui Add,Button,x8 Section w122 -Wrap,行为观察 ;按钮名
+Gui Add,Button,x8 Section w122 -Wrap,按钮名1
 Gui Add,CheckBox,x+5 yp+4
 
-Gui Add,Button,xs y+10 w122 -Wrap,幽灵猎手
+Gui Add,Button,xs y+10 w122 -Wrap,按钮名2
 Gui Add,CheckBox,x+5 yp+4
-Gui Add,Button,xs y+4 w122 -Wrap,码农贼船
+Gui Add,Button,xs y+4 w122 -Wrap,按钮名3
 Gui Add,CheckBox,x+5 yp+4
 
-Gui Add,Button,xs y+10 w122 -Wrap,一战成硕
+Gui Add,Button,xs y+10 w122 -Wrap,按钮名4
 Gui Add,CheckBox,x+5 yp+4
 
 Gui Add,Button,xs y+10 w61 -Wrap,清除
@@ -24,15 +24,51 @@ Gui Add,Text,x+5 yp+4,0
 return
 
 
-Button行为观察: ;按钮名
+Button按钮名1:
 Switch
 {
 Case WinExist("ahk_exe QQ.exe"):
-    ReportTIM("56432") ;群号(开头)
+    ReportQQ("群号(开头)或群名")
 Case WinExist("ahk_exe TIM.exe"):
-    ReportQQ("54645") ;群号(开头)
+    ReportTIM("群号(开头)或群名")
 Default:
-    ReportWeChat("行为观察") ;群名
+    ReportWeChat("群名")
+}
+return
+
+Button按钮名2:
+Switch
+{
+Case WinExist("ahk_exe QQ.exe"):
+    ReportQQ("群号(开头)或群名")
+Case WinExist("ahk_exe TIM.exe"):
+    ReportTIM("群号(开头)或群名")
+Default:
+    ReportWeChat("群名")
+}
+return
+
+Button按钮名3:
+Switch
+{
+Case WinExist("ahk_exe QQ.exe"):
+    ReportQQ("群号(开头)或群名")
+Case WinExist("ahk_exe TIM.exe"):
+    ReportTIM("群号(开头)或群名")
+Default:
+    ReportWeChat("群名")
+}
+return
+
+Button按钮名4:
+Switch
+{
+Case WinExist("ahk_exe QQ.exe"):
+    ReportQQ("群号(开头)或群名")
+Case WinExist("ahk_exe TIM.exe"):
+    ReportTIM("群号(开头)或群名")
+Default:
+    ReportWeChat("群名")
 }
 return
 
